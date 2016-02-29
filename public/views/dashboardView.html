@@ -1,0 +1,37 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-color: #cccccc;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading" style="padding: 10px 0 50px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-12">
+      <div class="well">
+        <h3>Posts</h3>
+        <ul class="list-group" ng-if="posts.length > 0">
+          <li class="list-group-item row" ng-repeat="post in posts">
+            <div class="col-sm-10" ng-bind="post.title"></div>
+            <div class="col-sm-2 pull-right text-center">
+              <button class="btn btn-primary btn-sm btn-action" ng-click="edit(post)">Edit</button>
+              <button class="btn btn-danger btn-sm btn-action" ng-click="delete(post.id)">Delete</button>
+            </div>
+          </li>
+        </ul>
+        <div class="alert alert-danger" ng-if="posts.error">
+          <strong>There was an error: </strong> {{post.error.error}}
+          <br>Please go back and login again
+        </div>
+        <div class="alert alert-warning text-center" ng-if="posts.length <= 0">
+          No data is currently available.
+      </div>
+    </div>
+  </div>
+</div>
