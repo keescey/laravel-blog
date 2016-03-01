@@ -31,10 +31,10 @@
       templateUrl: '../views/dashboardView.html',
       controller: 'DashboardController'
     })
-    .state('posts', {
-      url: '/posts',
+    .state('post', {
+      url: '/post/:postId',
       templateUrl: '../views/postView.html',
-      controller: 'PostsController'
+      controller: 'PostController'
     })
     .state('users', {
       url: '/users',
