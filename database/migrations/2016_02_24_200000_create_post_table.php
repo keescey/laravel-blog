@@ -20,6 +20,7 @@ class CreatePostTable extends Migration
             ->references('id') -> on('users')
             ->onDelete('cascade');
         $table->string('title') -> unique();
+        $table->string('subheading');
         $table->text('body');
         $table->boolean('active') -> unsigned() -> default(1);
         $table->timestamps();
