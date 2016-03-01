@@ -18,7 +18,7 @@
       // Use Satellizer's $auth service to login
       $auth.login(credentials).then(function(data) {
         // If login is successful, redirect to the users state
-        $state.go('users');
+        $state.go('dashboard');
 
       }, function(error) {
         if(error.data.error == 'invalid_credentials') {
