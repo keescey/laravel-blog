@@ -35,8 +35,8 @@ This is a basic personal blog web app using Laravel 5
 
 ### DB migrations
 
-    # Create a new migration to create a database table
-    php artisan make:migration create_posts_table --create=posts
+    # Create a database
+    mysql> CREATE DATABASE laraveldb;
 
     # Run database migrations
     php artisan migrate
