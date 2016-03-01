@@ -5,6 +5,8 @@
         <title>Laravel Blog</title>
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="stylesheets/clean-blog.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
         <base href="/">
     </head>
     <body ng-app="authApp">
@@ -94,4 +96,5 @@
     <script src="scripts/authController.js"></script>
     <script src="scripts/userController.js"></script>
     <script src="scripts/dashboardController.js"></script>
+    <script src="scripts/postController.js"></script>
 </html>
