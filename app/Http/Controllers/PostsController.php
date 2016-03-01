@@ -14,6 +14,13 @@ use App\Posts;
 
 class PostsController extends Controller
 {
+  public function __construct() {
+    // Apply the jwt.auth middleware to all methods in this controller
+    // except for the authenticate method. We don't want to prevent
+    // the user from retrieving their token if they don't already have it
+    $this->middleware('jwt.auth', ['except' => ['index']]);
+  }
+
   /**
   * Display a listing of the resource.
   *
@@ -22,7 +29,8 @@ class PostsController extends Controller
   public function index($id = null) {
 
     if ($id == null) {
-      return Posts::orderBy('created_at', 'asc')->with('author')->get();
+      $posts = Posts::orderBy('created_at', 'desc')->with('author')->get();
+      return response()->json($posts, 200);
     } else {
       return $this->show($id);
     }
@@ -38,12 +46,13 @@ class PostsController extends Controller
     $post = new Posts;
 
     $post->title = $request->input('title');
+    $post->subheading = $request->input('subheading');
     $post->body = $request->input('body');
     $post->author_id = $request->input('author_id');
     $post->active = 1;
     $post->save();
 
-    return 'Post record successfully created with id ' . $post->id;
+    return response()->json($post, 201);
   }
 
   /**
@@ -53,7 +62,8 @@ class PostsController extends Controller
   * @return Response
   */
   public function show($id) {
-    return Posts::find($id);
+    $post = Posts::with('author')->find($id);
+    return response()->json($post, 200);
   }
 
   /**
@@ -67,10 +77,12 @@ class PostsController extends Controller
     $post = Posts::find($id);
 
     $post->title = $request->input('title');
+    $post->subheading = $request->input('subheading');
     $post->body = $request->input('body');
     $post->save();
 
-      return "Sucess updating post #" . $post->id;
+    return response()->json($post, 200);
+      // return "Sucess updating post #" . $post->id;
   }
   /**
   * Remove the specified resource from storage.
@@ -83,7 +95,10 @@ class PostsController extends Controller
     $post = Posts::find($id);
     if($post) {
       $post->delete();
-      return "Post record successfully deleted #" . $request->input('id');
+      return response()->json($post, 204);
+      // return "Post record successfully deleted #" . $request->input('id');
+    } else {
+      return response()->json(404);
     }
 
   }
