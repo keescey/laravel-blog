@@ -1,27 +1,48 @@
-# Laravel PHP Framework
+Blog App (using Laravel 5)
+==========================
+This is a basic personal blog web app using Laravel 5
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+### Local dev environment setup
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+    # Ensure php is installed
+    $ php -v
+    PHP 5.5.30 (cli) (built: Oct 23 2015 17:21:45)
+    Copyright (c) 1997-2015 The PHP Group
+    Zend Engine v2.5.0, Copyright (c) 1998-2015 Zend Technologies
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+    # Install composer and laravel (if necessary)
+    $ curl -sS https://getcomposer.org/installer | php
+    $ mv composer.phar /usr/local/bin/composer
+    $ composer global require "laravel/installer"
 
-## Official Documentation
+    # Add composer binaries to the global path
+    $ export PATH=$PATH:~/.composer/vendor/bin
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+    # Check if laravel installer is installed correctly
+    $ laravel -V
+    Laravel Installer version 1.3.1
 
-## Contributing
+### Dev workflow
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+    # Install dependencies
+    composer install --prefer-dist
 
-## Security Vulnerabilities
+    # Run database migrations
+    php artisan migrate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+    # Run the server
+    php artisan serve
 
-## License
+### DB migrations
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+    # Create a database
+    mysql> CREATE DATABASE laraveldb;
+
+    # Run database migrations
+    php artisan migrate
+
+    # Seeding the database
+    php artisan db:seed
+
+    # Re-seeding the database
+    php artisan migrate:refresh --seed
