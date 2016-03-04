@@ -63,6 +63,7 @@ class PostsController extends Controller
   */
   public function show($id) {
     $post = Posts::with('author')->find($id);
+
     return response()->json($post, 200);
   }
 

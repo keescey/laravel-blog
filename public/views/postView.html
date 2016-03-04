@@ -19,10 +19,34 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-          <p> {{post.body}} </p>
+          <p ng-bind-html='post.body'></p>
+          <p ng-bind-html-unsafe='post.body'></p>
       </div>
     </div>
   </div>
+  <hr ng-if="comments.length > 0">
 </article>
 
-<hr>
+<!-- Post Comments -->
+
+<div class="row" ng-repeat="comment in comments">
+  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <div class="col-sm-1 no-padding">
+      <div class="thumbnail no-padding">
+        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+      </div><!-- /thumbnail -->
+    </div><!-- /col-sm-1 -->
+
+    <div class="col-sm-11">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong>{{comment.author.fname}} {{comment.author.lname}}</strong>
+          <span am-time-ago="comment.created_at" class="text-muted"></span>
+        </div>
+        <div class="panel-body">
+          {{comment.comment}}
+        </div><!-- /panel-body -->
+      </div><!-- /panel panel-default -->
+    </div><!-- /col-sm-5 -->
+  </div><!-- /col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 -->
+</div><!-- /row -->

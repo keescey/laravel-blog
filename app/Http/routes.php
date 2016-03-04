@@ -25,6 +25,10 @@ Route::group(['prefix' => 'api'], function() {
   Route::post('posts/{id}', 'PostsController@update');
   Route::delete('posts/delete/{id}', 'PostsController@destroy');
 
+  Route::get('comments/{id?}', 'CommentsController@index');
+  Route::get('comments/bypost/{post_id?}', 'CommentsController@showByPost');
+  Route::post('comments', 'CommentsController@store');
+
 });
 
 

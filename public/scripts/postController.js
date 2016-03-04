@@ -17,6 +17,14 @@
     }).error(function(error) {
       $scope.error = error;
     });
+
+    $http.get('api/comments/bypost/'+postId).success(function(data) {
+      console.log('comment',data)
+      $scope.comments = data;
+    }).error(function(error) {
+      $scope.error = error;
+    });
+
   }
 
 })();

@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Posts;
+use App\Comments;
 
 class DatabaseSeeder extends Seeder
 {
@@ -51,8 +52,6 @@ class DatabaseSeeder extends Seeder
         {
             Posts::create($post);
         }
-
-
 
         Model::reguard();
 

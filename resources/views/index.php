@@ -89,6 +89,7 @@
     <script src="node_modules/satellizer/satellizer.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/angular-moment/angular-moment.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 
     <!-- Application Scripts -->
     <script src="scripts/app.js"></script>
